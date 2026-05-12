@@ -27,6 +27,8 @@ nav a {
 section {
   margin-bottom: 0;   /* Removes space below the section */
   padding-bottom: 10px; /* Optional: adds a tiny bit of breathing room */
+  padding-left: 20px; /* Adjust this value for more or less space */
+  padding-right: 20px; /* Usually good practice to mirror it on the right */
 }
 h2 {
   border-bottom: 2px solid #ddd;
