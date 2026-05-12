@@ -29,12 +29,11 @@ section {
   max-width: 800px;
   margin: auto;
 }
-
 h2 {
   border-bottom: 2px solid #ddd;
   padding-bottom: 5px;
+  margin-top: 10px; /* Adjust this value to your liking */
 }
-
 footer {
   background: #002b5c;
   color: white;
