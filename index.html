@@ -262,6 +262,56 @@
       .row2 { grid-template-columns: 1fr; }
       header h1 { font-size: 1.4rem; }
     }
+
+    /* ── Accordion ── */
+    .accordion { list-style: none; padding: 0; margin: 0; }
+    .accordion li { border-bottom: 1px solid var(--rule); }
+    .accordion li:first-child { border-top: 1px solid var(--rule); }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .accordion-header:hover .acc-title { color: var(--accent); }
+    .acc-speaker {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .acc-title {
+      font-family: var(--serif);
+      font-size: 0.97rem;
+      color: var(--ink);
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .acc-arrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .accordion li.open .acc-arrow { transform: rotate(180deg); }
+    .accordion li.open .acc-title { color: var(--accent); }
+    .accordion-body {
+      display: none;
+      padding: 0 0 1rem 0;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+    .accordion li.open .accordion-body { display: block; }
+    .acc-speaker-link { color: var(--accent); text-decoration: none; }
+    .acc-speaker-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -301,7 +351,6 @@
   <section id="overview">
     <h2>Overview</h2>
     <p>The theme of the 2027 NZMRI Summer Workshop is Combinatorics, Probability and Symmetry.</p>
-    <p>This meeting is organised in partnership with the <a href="https://www.claymath.org/">Clay Mathematics Institute</a>, which kindly supports the participation of Sarah Peluse and Julian Sahasrabudhe as named speakers.</p>
     <p>This workshop features leading researchers giving lecture series on selected topics. The broad theme of the meeting is the interplay of combinatorics, probability, and symmetry. Topics covered include problems of geometric flavour with roots in analysis, probability and combinatorics, probabilistic and additive combinatorics, enumerative combinatorics, and more.</p>
   </section>
 
@@ -312,16 +361,77 @@
 
   <section id="lectures">
     <h2>Lecture Series</h2>
-    <p>The workshop features six outstanding researchers, each giving a series of three lectures.</p>
-    <ul>
-      <li><a href="https://lieben.au/">Anita Liebenau</a> (University of New South Wales)</li>
-      <li><a href="https://users.cecs.anu.edu.au/~bdm/">Brendan McKay</a> (Australian National University)</li>
-      <li><a href="https://stanford.edu/~speluse/">Sarah Peluse</a> (Stanford University)</li>
-      <li><a href="https://www.dpmms.cam.ac.uk/~jdrs2/">Julian Sahasrabudhe</a> (University of Cambridge)</li>
-      <li><a href="https://sites.google.com/view/marius-tiba">Marius Tiba</a> (EPFL)</li>
-      <li><a href="https://www.maths.usyd.edu.au/u/geordie/">Geordie Williamson</a> (University of Sydney)</li>
+    <p>The workshop features six outstanding researchers, each giving a series of three lectures. Click a title to read the abstract.</p>
+
+    <ul class="accordion">
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://lieben.au/">Anita Liebenau</a></span>
+          <span class="acc-title">Asymptotic enumeration of regular graphs</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>This course will explore techniques for the asymptotic enumeration of regular graphs, which have numerous applications beyond counting, including generating graphs with specified degree sequences, aiding in network design and testing, enhancing our understanding of network dynamics, and modeling real-world systems. Existing techniques can be roughly categorized into three methods: the configuration model and switchings, the use of generating functions combined with saddle point methods, and a relatively recent approach utilising degree switchings to derive contracting formulae. In this course, we will give an overview of all three methods.</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://users.cecs.anu.edu.au/~bdm/">Brendan McKay</a></span>
+          <span class="acc-title">A random sample of results in combinatorial enumeration</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>Combinatorial enumeration is the art of counting discrete objects, either by listing them or by discovering a mathematical way to count them without listing. Sometimes the approximate (asymptotic) number can be found when the exact count is too hard. Methods can be classed as generative (listing the objects), combinatorial (bijections, decompositions, recurrences, etc), or analytic (generating functions, complex analysis, etc). We will provide a limited view of each of the three methods by way of examples that include recent research.</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://stanford.edu/~speluse/">Sarah Peluse</a></span>
+          <span class="acc-title">Title to be announced</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>Abstract to be announced.</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://www.dpmms.cam.ac.uk/~jdrs2/">Julian Sahasrabudhe</a></span>
+          <span class="acc-title">Symmetry, randomness and the Ramsey numbers</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>In these lectures I will give a gentle introduction to some exciting recent developments in the study of lower bounds for the Ramsey numbers. The Ramsey numbers are fundamental quantities in combinatorics and, while they a priori have nothing to do with either probability or symmetry, the study of these numbers has uncovered a rich connection between these concepts.</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://sites.google.com/view/marius-tiba">Marius Tiba</a></span>
+          <span class="acc-title">Erd&#337;s Covering Systems</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>A covering system is a finite collection of arithmetic progressions whose union is the set of integers. The study of covering systems was initiated by Erd&#337;s in 1950 and over the following decades many beautiful questions and conjectures were posed regarding their properties, but until recently little was known. One particularly notorious question, due to Erd&#337;s, asks whether there exist covering systems with distinct moduli whose minimum modulus is arbitrarily large. This problem was resolved in 2015 by Hough, who showed that in any such system the minimum modulus is bounded. Another notorious question, due to Erd&#337;s, asks whether there exist covering systems with distinct odd moduli. This question is still open. The purpose of these lectures is to review important problems on covering systems and to give a gentle exposition of a modern technique that was recently used to resolve several of these problems. We hope that this technique will have further applications in other combinatorial settings.</p>
+        </div>
+      </li>
+
+      <li>
+        <div class="accordion-header" onclick="toggleAcc(this)">
+          <span class="acc-speaker"><a class="acc-speaker-link" href="https://www.maths.usyd.edu.au/u/geordie/">Geordie Williamson</a></span>
+          <span class="acc-title">Braids, the Jones polynomial and neural networks</span>
+          <span class="acc-arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <p>I will give three lectures at the interface of knot theory, representation theory, combinatorics and AI. The first two lectures will centre around the Jones polynomial. This seems particularly fitting, as these lectures are named in Jones&#8217; honour. I&#8217;ll discuss the fascinating open question of whether the Jones polynomial detects the unknot, and report on recent developments. There are fascinating connections to braid groups, representation theory and AI methods, which I&#8217;ll try to touch on. In the last lecture, I&#8217;ll change tack somewhat and discuss some interesting combinatorial problems that arise from moduli spaces in algebraic geometry.</p>
+        </div>
+      </li>
+
     </ul>
-    <p>Geordie is the inaugural NZMRI <a href="https://en.wikipedia.org/wiki/Vaughan_Jones">Vaughan Jones</a> lecturer. Named after our founding director, this scheme is funded by a generous donor.</p>
   </section>
 
   <section id="schedule">
@@ -379,9 +489,12 @@
     <h2>Registration</h2>
 
     <!--
-      TO ENABLE THE FORM ON 1 AUGUST:
-        1. Delete (or comment out) the <div class="reg-closed"> block immediately below.
-        2. Remove  style="display:none;"  from the <div id="reg-form-wrapper"> tag further down.
+      TO DISABLE THE FORM: add  style="display:none;"  to the div below,
+      and uncomment the reg-closed notice.
+
+    <div class="reg-closed">
+      Registration will open from mid August 2026. Please check back then.
+    </div>
     -->
 
     <div id="reg-form-wrapper">
@@ -527,6 +640,11 @@
 </div>
 
 <script>
+  function toggleAcc(header) {
+    var li = header.parentElement;
+    li.classList.toggle('open');
+  }
+
   function toggleDietaryOther(el) {
     var show = el.value === 'Other';
     document.getElementById('dietary-other').style.display = show ? 'block' : 'none';
