@@ -438,7 +438,16 @@
     <h2>Schedule</h2>
     <p><strong>Arrival:</strong> by the evening of Saturday, 9 January<br>
        <strong>Departure:</strong> lunchtime Saturday, 16 January</p>
-    <p>Talks will start at 9am Sunday 10 January, and finish by lunchtime Saturday 16 January. Lectures will run each morning. Wednesday is a free day.</p>
+    <p>Lectures run each morning from 9am. On Wednesday there will be a day trip to Abel Tasman National Park. A summary is given below; see the <a href="timetable.html">full timetable</a> for exact times and details of the Wednesday excursion.</p>
+    <ul>
+      <li><strong>Sunday 10 January:</strong> Sahasrabudhe, Peluse, Williamson; dinner at the conference centre.</li>
+      <li><strong>Monday 11 January:</strong> McKay, Liebenau, Tiba; lunch at the conference centre.</li>
+      <li><strong>Tuesday 12 January:</strong> Sahasrabudhe, Peluse, Williamson; lunch at the conference centre.</li>
+      <li><strong>Wednesday 13 January:</strong> Day trip to Abel Tasman National Park; bus departs at 8:30am and returns at approximately 5:30pm.</li>
+      <li><strong>Thursday 14 January:</strong> McKay, Liebenau, Williamson; lunch at the conference centre.</li>
+      <li><strong>Friday 15 January:</strong> Sahasrabudhe, Peluse, Tiba; dinner at the conference centre.</li>
+      <li><strong>Saturday 16 January:</strong> McKay, Liebenau, Tiba; workshop finishes at lunchtime.</li>
+    </ul>
   </section>
 
   <section id="notes">
@@ -459,7 +468,7 @@
 
   <section id="meals">
     <h2>Meals</h2>
-    <p>Dinner will be provided at the Function Centre for participants and their families on Sunday and Friday. Lunch will be provided on Monday, Tuesday, and Thursday. Wednesday is a free day.</p>
+    <p>Dinner will be provided at the Function Centre for participants and their families on Sunday and Friday. Lunch will be provided on Monday, Tuesday, and Thursday. No catered meals are scheduled for Wednesday, when the Abel Tasman day trip takes place.</p>
   </section>
 
   <section id="support">
@@ -496,6 +505,10 @@
       Registration will open from mid August 2026. Please check back then.
     </div>
     -->
+
+    <div class="reg-closed" id="registration-closed-notice" style="display:none;">
+      Registration is now closed.
+    </div>
 
     <div id="reg-form-wrapper">
       <p>Please complete the form below to register for the NZMRI Summer Workshop 2027. The organisers will be in touch closer to the workshop.</p>
@@ -633,7 +646,7 @@
   </section>
 
   <footer>
-    <span>Last updated October 2026</span>
+    <span>Last updated November 2026</span>
     <span>&copy; NZMRI</span>
   </footer>
 
@@ -657,6 +670,26 @@
     document.getElementById('student-level').style.display = isStudent ? 'block' : 'none';
     document.getElementById('academic-companion').style.display = isAcademic ? 'block' : 'none';
   }
+
+  // Registration closes at the end of Friday, 27 November 2026 (NZ time).
+  function updateRegistrationStatus() {
+    var nzDate = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Pacific/Auckland',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+
+    if (nzDate >= '2026-11-28') {
+      var wrapper = document.getElementById('reg-form-wrapper');
+      if (wrapper) wrapper.style.display = 'none';
+
+      var notice = document.getElementById('registration-closed-notice');
+      if (notice) notice.style.display = 'block';
+    }
+  }
+
+  updateRegistrationStatus();
 </script>
 </body>
 </html>
